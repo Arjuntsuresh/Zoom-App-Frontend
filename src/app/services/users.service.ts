@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { searchData } from '../model/searchData';
+import { loginDetails, searchData } from '../model/searchData';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -16,5 +16,11 @@ export class UsersService {
   }
   getToken(token:any):Observable<any>{
     return this.http.get<any>(`${environment.apiUrl}/${token}`);
+  }
+  loginAdmin(loginData:loginDetails):Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}/admin/admin-login`,loginData);
+  }
+  getAllData():Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}/admin/get-all-data`);
   }
 }

@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
       };
       this.userService.applyZoom(searchData).subscribe({
         next:(response)=>{
-          console.log(response);
+         // console.log(response);
         },
         error:(error)=>{
           console.error(error);
