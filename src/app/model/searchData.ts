@@ -1,7 +1,9 @@
 
 export interface searchData{
     date:String,
-    time:String
+    time:String,
+    topic?:String,
+    duration?:String
 }
 
 export interface loginDetails {
@@ -13,5 +15,8 @@ export interface loginDetails {
     date: string;
     meetingUrl: string;
     time: string;
+    title: string;
     _id: string;
+    duration:string;
+    meetingId:string;
   }

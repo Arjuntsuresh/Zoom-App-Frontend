@@ -1,39 +1,44 @@
 <div class="container mt-5">
     <div class="form-container">
-      <form [formGroup]="searchForm" (ngSubmit)="submitSearch()">
+      <form (ngSubmit)="submitSearch()">
         <div class="row">
-          <!-- Job title input -->
+          <!-- Date input -->
           <div class="col-md-5 mb-3">
             <mat-form-field class="full-width-form-field">
-              <mat-icon matPrefix>search</mat-icon>
+              <mat-icon matPrefix>calendar_today</mat-icon>
               <mat-label>Date</mat-label>
-              <input matInput formControlName="date" type="date" />
+              <input matInput [(ngModel)]="retrivedData.date" name="date" type="date" />
             </mat-form-field>
           </div>
-          <!-- City, State input -->
+          
+          <!-- Time input -->
           <div class="col-md-5 mb-3">
             <mat-form-field class="full-width-form-field">
-              <mat-icon matPrefix>location_on</mat-icon>
+              <mat-icon matPrefix>schedule</mat-icon>
               <mat-label>Time</mat-label>
-              <input matInput formControlName="time" type="time" />
+              <input matInput [(ngModel)]="retrivedData.time" name="time" type="time" />
             </mat-form-field>
           </div>
-
+          
+          <!-- Topic input -->
           <div class="col-md-5 mb-3">
             <mat-form-field class="full-width-form-field">
-              <mat-icon matPrefix>location_on</mat-icon>
-              <mat-label>Time</mat-label>
-              <input matInput formControlName="topic" type="text" />
+              <mat-icon matPrefix>edit</mat-icon>
+              <mat-label>Topic</mat-label>
+              <input matInput [(ngModel)]="retrivedData.title" name="topic" type="text" />
             </mat-form-field>
           </div>
+          
+          <!-- Duration input -->
           <div class="col-md-5 mb-3">
             <mat-form-field class="full-width-form-field">
-              <mat-icon matPrefix>location_on</mat-icon>
+              <mat-icon matPrefix>access_time</mat-icon>
               <mat-label>Duration</mat-label>
-              <input matInput formControlName="duration" type="time" />
+              <input matInput [(ngModel)]="retrivedData.duration" name="duration" type="time" />
             </mat-form-field>
           </div>
-          <!-- Find jobs button -->
+          
+          <!-- Submit button -->
           <div class="col-md-2 mb-3">
             <button mat-stroked-button class="full-width-button" type="submit">
               Submit
@@ -42,4 +47,5 @@
         </div>
       </form>
     </div>
-</div>
+  </div>
+  

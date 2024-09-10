@@ -4,7 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/services/users.service';
 import { searchData } from 'src/app/model/searchData';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment.development';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,14 +19,6 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ){}
-  submit() {
-  
-      
-      const zoomAuthUrl = environment.baseUrl;
-      window.location.href = zoomAuthUrl;
-   
-  }
-  
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const code = params['code'];

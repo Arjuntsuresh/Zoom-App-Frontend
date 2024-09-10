@@ -1,4 +1,5 @@
-<a class="nav-link" [routerLink]="['/login']" routerLinkActive="active-link" style="color: #3f72af"> Admin Sign in</a>
+<!-- Only show this link if the admin is not logged in -->
+<a class="nav-link" *ngIf="!isAdminLoggedIn()" [routerLink]="['/login']" routerLinkActive="active-link" style="color: #3f72af"> Admin Sign in</a>
 <br>
 <br>
 <br>

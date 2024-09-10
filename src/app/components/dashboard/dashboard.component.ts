@@ -34,7 +34,9 @@ export class DashboardComponent implements OnInit {
   title = 'frontend';
   searchForm:FormGroup =this.builder.group({
     date:['', Validators.required],
-    time:['', Validators.required]
+    time:['', Validators.required],
+    topic:['', Validators.required],
+    duration:['', Validators.required]
   });
   submitSearch(){
     if(this.searchForm.invalid){
@@ -42,7 +44,9 @@ export class DashboardComponent implements OnInit {
     }else{
       const searchData:searchData ={
         date:this.searchForm.get('date')?.value,
-        time:this.searchForm.get('time')?.value
+        time:this.searchForm.get('time')?.value,
+        topic:this.searchForm.get('topic')?.value,
+        duration:this.searchForm.get('duration')?.value
       };
       this.userService.applyZoom(searchData).subscribe({
         next:(response)=>{
@@ -52,7 +56,7 @@ export class DashboardComponent implements OnInit {
             verticalPosition: 'top',
             horizontalPosition: 'right', // Snackbar position
           });
-          this.router.navigate(['/']); // Navigate to home page after successful application
+          this.router.navigate(['/admin-dashboard']); // Navigate to home page after successful application
         },
         error:(error)=>{
           console.error(error);
@@ -66,10 +70,11 @@ export class DashboardComponent implements OnInit {
     }
   }
   showErrors() {
-    const controlOrder = ['date', 'time']; // Order of controls
+    const controlOrder = ['date', 'time','topic']; // Order of controls
     const controlLabels: { [key: string]: string } = {
       date: 'Date',
       time: 'Time',
+      topic:'Title'
     };
     for (const name of controlOrder) {
       const control = this.searchForm.get(name);

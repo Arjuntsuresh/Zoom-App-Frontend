@@ -1,18 +1,33 @@
+<button (click)="submit()">Create a meet</button>
 <table class="data-table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Join Link</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let x of datas">
-        <td>{{ x._id }}</td>
-        <td>{{ x.date | date: 'yyyy-MM-dd' }}</td>
-        <td>{{ x.time }}</td>
-        <td><a [href]="x.meetingUrl" target="_blank">Join Meeting</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th>Join Link</th>
+      <th>Actions</th> <!-- New column for actions -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of datas">
+      <td>{{ x.title }}</td>
+      <td>{{ x.date | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ x.time }}</td>
+      <td>{{ x.duration | timePipe }} hour</td>
+      <td><a [href]="x.meetingUrl" target="_blank">Join Meeting</a></td>
+      <td>
+        <!-- Update button -->
+        <button (click)="updateMeeting(x.meetingId)">
+          <i class="fas fa-edit"></i> <!-- FontAwesome icon for update -->
+        </button>
+
+        <!-- Delete button -->
+        <button (click)="deleteMeeting(x.meetingId)">
+          <i class="fas fa-trash"></i> <!-- FontAwesome icon for delete -->
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

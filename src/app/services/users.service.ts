@@ -23,4 +23,13 @@ export class UsersService {
   getAllData():Observable<any>{
     return this.http.get<any>(`${environment.apiUrl}/admin/get-all-data`);
   }
+  deleteMeeting(id:any):Observable<any>{
+    return this.http.delete<any>(`${environment.apiUrl}/admin/delete-meeting/${id}`);
+  }
+  getDataById(id:any):Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}/admin/get-data-by-id/${id}`);
+  }
+  updateMeeting(id:any,data:any):Observable<any>{
+    return this.http.put<any>(`${environment.apiUrl}/admin/update-meeting/${id}`,data);
+  }
 }
