@@ -22,10 +22,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const code = params['code'];
-      console.log(code);
       if (code) {
         this.userService.getToken(code).subscribe((job) => {
-         console.log(job);
         });
       }
     });
@@ -45,7 +43,6 @@ export class HomeComponent implements OnInit {
       };
       this.userService.applyZoom(searchData).subscribe({
         next:(response)=>{
-         // console.log(response);
         },
         error:(error)=>{
           console.error(error);

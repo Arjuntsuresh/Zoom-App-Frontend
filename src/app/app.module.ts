@@ -14,7 +14,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { TimePipePipe } from './pipes/time-pipe.pipe';
 import { EditZoomDetailComponent } from './components/edit-zoom-detail/edit-zoom-detail.component';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'; // Required for the date picker
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,10 @@ import { EditZoomDetailComponent } from './components/edit-zoom-detail/edit-zoom
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,8 +21,6 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllData().subscribe(
       (response) => {
-        // console.log(response);
-
         if (response.status === 'success' && Array.isArray(response.data)) {
           this.datas = response.data;
         } else {
@@ -41,7 +39,6 @@ export class AdminDashboardComponent implements OnInit {
   deleteMeeting(id: any) {
     this.userService.deleteMeeting(id).subscribe({
       next: (responce) => {
-        console.log('Meeting deleted successfully:', responce); // Debugging log
         this.snackbar.open('Meeting deleted successfully!', 'Close', {
           duration: 2000,
           verticalPosition: 'top',

@@ -23,10 +23,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const code = params['code'];
-      console.log(code);
       if (code) {
         this.userService.getToken(code).subscribe((job) => {
-         console.log(job);
         });
       }
     });
@@ -50,7 +48,6 @@ export class DashboardComponent implements OnInit {
       };
       this.userService.applyZoom(searchData).subscribe({
         next:(response)=>{
-          console.log(response);
           this.snackBar.open('Zoom application successful', 'Close', {
             duration: 3000,
             verticalPosition: 'top',
