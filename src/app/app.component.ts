@@ -1,6 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -16,6 +14,10 @@ export class AppComponent implements OnInit  {
 
   isAdminLoggedIn(): boolean {
     return this.auth.isAdminLoggedIn();
+  }
+  
+  isStudentLoggedIn(): boolean {
+  return this.auth.isStudentLoggedIn();
   }
  
 }

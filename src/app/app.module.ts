@@ -16,7 +16,9 @@ import { TimePipePipe } from './pipes/time-pipe.pipe';
 import { EditZoomDetailComponent } from './components/edit-zoom-detail/edit-zoom-detail.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; // Required for the date picker
+import { MatNativeDateModule } from '@angular/material/core';
+import { StudentLoginComponent } from './components/student-login/student-login.component';
+import { StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component'; // Required for the date picker
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { MatNativeDateModule } from '@angular/material/core'; // Required for th
     LogInComponent,
     AdminDashboardComponent,
     TimePipePipe,
-    EditZoomDetailComponent
+    EditZoomDetailComponent,
+    StudentLoginComponent,
+    StudentDashboardComponent
   ],
   imports: [
     BrowserModule,

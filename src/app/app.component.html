@@ -3,4 +3,7 @@
 <br>
 <br>
 <br>
+<a class="nav-link" *ngIf="!isStudentLoggedIn()" [routerLink]="['/student-login']" routerLinkActive="active-link" style="color: #3f72af"> Student Sign in</a>
+<br>
+<br>
 <router-outlet></router-outlet>

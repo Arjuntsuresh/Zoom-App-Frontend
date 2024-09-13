@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { loginDetails, searchData } from '../model/searchData';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-
+import { MeetingData } from '../model/searchData';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,5 +31,11 @@ export class UsersService {
   }
   updateMeeting(id:any,data:any):Observable<any>{
     return this.http.put<any>(`${environment.apiUrl}/admin/update-meeting/${id}`,data);
+  }
+  loginStudent(loginData:loginDetails):Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}/student-login`,loginData);
+  }
+  getAllDataStudent(email:string):Observable<{status:string,data: MeetingData[]}>{
+    return this.http.get<{ status: string; data: MeetingData[] }>(`${environment.apiUrl}/get-all-data/${email}`);
   }
 }
