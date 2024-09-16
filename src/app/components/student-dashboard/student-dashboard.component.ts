@@ -11,6 +11,7 @@ export class StudentDashboardComponent implements OnInit {
 
   datas: any[] = [];
   email: string='';
+  today:Date = new Date();
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute  // Import ActivatedRoute from @angular/router
@@ -21,11 +22,11 @@ export class StudentDashboardComponent implements OnInit {
       this.email = params['email'];
       console.log('Email:', this.email);
     });
-
+    this.today = new Date(); 
     this.userService.getAllDataStudent(this.email).subscribe(
       (response) => {
         if (response.status === 'success') {
-          const data = response.data;
+          this.datas = response.data;
 
           // If the response is a single object, wrap it into an array
           // this.datas = Array.isArray(data) ? data : [{

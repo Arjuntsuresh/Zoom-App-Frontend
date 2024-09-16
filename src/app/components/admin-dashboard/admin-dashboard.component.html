@@ -11,23 +11,33 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let x of datas">
+    <tr *ngFor="let x of datas" 
+        [ngClass]="{'blur': (toDate(x.date) < today)}">
       <td>{{ x.title }}</td>
       <td>{{ x.date | date: 'yyyy-MM-dd' }}</td>
       <td>{{ x.time }}</td>
       <td>{{ x.duration | timePipe }} hour</td>
-      <td><a [href]="x.meetingUrl" target="_blank">Join Meeting</a></td>
+  
+      <!-- Meeting URL (Disable link if meeting date is in the past) -->
       <td>
-        <!-- Update button -->
-        <button (click)="updateMeeting(x.meetingId)">
-          <i class="fas fa-edit"></i> <!-- FontAwesome icon for update -->
+        <ng-container *ngIf="toDate(x.date) >= today; else disabledLink">
+          <a [href]="x.meetingUrl" target="_blank">Join Meeting</a>
+        </ng-container>
+        <ng-template #disabledLink>
+          <span class="disabled">Meeting Ended</span>
+        </ng-template>
+      </td>
+  
+      <!-- Edit and Delete buttons (Disabled if meeting date is in the past) -->
+      <td>
+        <button (click)="updateMeeting(x.meetingId)" [disabled]="toDate(x.date) < today">
+          <i class="fas fa-edit"></i>
         </button>
-
-        <!-- Delete button -->
         <button (click)="deleteMeeting(x.meetingId)">
-          <i class="fas fa-trash"></i> <!-- FontAwesome icon for delete -->
+          <i class="fas fa-trash"></i>
         </button>
       </td>
     </tr>
   </tbody>
+  
 </table>

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdminDashboardComponent implements OnInit {
   datas: DataItem[] = [];
-
+  today:Date=new Date();
   constructor(
     private userService: UsersService,
     private snackbar: MatSnackBar,
@@ -19,6 +19,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.today = new Date();
     this.userService.getAllData().subscribe(
       (response) => {
         if (response.status === 'success' && Array.isArray(response.data)) {
@@ -31,6 +32,10 @@ export class AdminDashboardComponent implements OnInit {
         console.error('Error fetching data', error);
       }
     );
+  }
+
+  toDate(dateString: string): Date {
+    return new Date(dateString);
   }
 
   updateMeeting(id: any) {

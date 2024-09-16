@@ -14,3 +14,16 @@
   .data-table th {
     background-color: #f4f4f4;
   }
+
+  .blur {
+    filter: blur(2px);
+    pointer-events: none;  /* Prevent interaction with the row */
+    opacity: 0.5;
+  }
+  
+  .disabled {
+    color: gray;
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+  
